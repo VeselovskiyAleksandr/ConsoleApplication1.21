@@ -13,15 +13,11 @@ int numberOptions(int n, int k=3) {
 	else if (n<=3) {	
 		numberJumps = 2 * numberOptions(n - 1);
 		return numberJumps;
-	}
-	else if (n > 3) {
+	}	
 		for (int i = 1; i <= 3; i++) {
 			numberJumps += numberOptions(n - i);
-			
 		}
-	}
 	return numberJumps;
-
 }
 
 int main()

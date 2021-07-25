@@ -6,14 +6,11 @@
 using namespace std;
 
 void swapvec(vector <int> &a, int *pb) {	
-	int b[5];
-//	int *pb = &b[0],
-	int *pa=&a[0], t;
 	for (int i = 0; i < 5; i++) {
+      int t;
 		t = a[i];
 		a[i] = *(pb + i);
-		*(pb + i) = t;
-		b[i] = *(pb + i); 
+		*(pb + i) = t; 
 	}
 }
 
@@ -21,23 +18,22 @@ int main()
 {
 	vector <int> vec = { 12, 15, 19, 23, 34 };
 	int array[] = { 1, 3, 5, 7, 9 };
-	int* parray = array;
 	cout << "\nSource vector:    ";
 	for (int i = 0; i < vec.size(); i++) {
 		cout << vec[i] << " ";
 	}
 	cout << "\nSource array:      ";
 	for (int i = 0; i < 5; i++) {
-		cout << *(parray+i) << " ";
+		cout << *(array+i) << " ";
 	}
-	swapvec(vec, parray);
+	swapvec(vec, array);
 	cout << "\n\nRearrenged vector: ";
 	for (int i = 0; i < vec.size(); i++) {
 		cout << vec[i] << " ";
 	}
 	cout << "\nRearrenged array:  ";
 	for (int i = 0; i < 5; i++) {
-		cout << *(parray+i) << " ";
+		cout << *(array+i) << " ";
 	}
 	cout << "\n";
 }

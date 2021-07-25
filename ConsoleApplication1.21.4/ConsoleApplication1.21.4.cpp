@@ -7,7 +7,7 @@ using namespace std;
 
 void countingDigits(long long int n, int ans) {
 	while (n / 10 >= 0) {
- if((n%10)%2==0) {
+ if(n%2==0) {
 			ans++;		
 			cout << n % 10 << " ";
 		}
