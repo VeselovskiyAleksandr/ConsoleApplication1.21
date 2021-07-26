@@ -7,30 +7,50 @@ using namespace std;
 
 int numberOptions(int n, int k=3) {
 	int numberJumps=0;
-	if (k == 1 && n ==1) {
+	if (n == 1) {		
 		return 1;
 	}
-	else if (n == k) {
-			numberJumps =2* numberOptions(n - 1, k-1);
-return numberJumps;
-	}
-	else if (n>k) {
-		for (int i = 1; i <= k; i++) {
-			numberJumps += numberOptions(n - i, k);
-	}
+	else if (n==k) {
+		numberJumps = 2 * numberOptions(n- 1,k- 1);
 		return numberJumps;
-	}       
-}
+	}
+	else if (n > k) {
+        int count = 1;
+			for (int i = 1; i <=k; i++) {	
+				if (n - i >= k) {
+					numberJumps += numberOptions(n - i, k);
+				}
+				else {
+					numberJumps += numberOptions(n - i, k - i+count); 
+				}
+				if (n - i > k) {
+					count++;
+		        		}
+	         	}
+       }			
+		return numberJumps;
+}       
+
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
-	int n, k, count = 1, counter = 1, i;
+	int n, k, count = 0, counter = 1, i;
 	cout << "\nУкажите количество ступеней: ";
 	cin >> n;
 	cout << "\nУкажите количество ступеней,на кторое может прыгнуть кролик за один раз : ";
 	cin >> k;
 	cout << "\nКоличество возможных вариантов: " << numberOptions(n, k);
+	cout << "\nПояснение: ";
+	for (int i = 0; i < n;i++) {
+		for (int j = 1; j <= k; j++) {
+			if (i + j > n) {
+				break;
+			}
+	//		cout << i + j << " ";
+		}
+		count++;
+	}
 }
 
 

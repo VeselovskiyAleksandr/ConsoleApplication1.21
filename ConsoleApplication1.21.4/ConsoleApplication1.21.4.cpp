@@ -5,19 +5,19 @@
 #include <locale.h>
 using namespace std;
 
-void countingDigits(long long int n, int ans) {
-	while (n / 10 >= 0) {
+void countingDigits(long long int n, int ans) {	
  if(n%2==0) {
 			ans++;		
-			cout << n % 10 << " ";
+ cout << n%10 << " ";
 		}
-		if ((n / 10) == 0) {
-			cout << "\nВ числе " << ans<<" чётных цифр.";
-			break;
+ if ((n / 10) == 0) {
+		 cout << "\nВ числе " << ans << " чётных цифр.";
+	 }
+		else {
+			n /= 10; 
+			countingDigits(n, ans);
 		}
-		n /= 10;
 	}
-}
 
 int main()
 {
